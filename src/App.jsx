@@ -10,15 +10,20 @@ function App() {
   const [readingTime, setReadingTime] = useState(0);
   
   const handleAddToBookmark = (blog) =>{
-    const isExist = bookmark.find(cart => cart.id === blog.id);
-    if(isExist){
-     return alert('Item is already exists in the selections')
+    const isExist = bookmark.find((cart) => cart.id === blog.id);
+
+    if(!isExist){
+      setBookmark([...bookmark, blog]);
     }
-    // else{
-    //   alert('Item is already exists in the selections')
+     else{
+       alert('Item is already exists in the selections')
+     }
+
+    // if(isExist){
+    //  return alert('Item is already exists in the selections')
     // }
-     const newBookmark = [...bookmark, blog];
-     setBookmark(newBookmark);
+    //  const newBookmark = [...bookmark, blog];
+    //  setBookmark(newBookmark);
   }
 
   const handleMarkAsRead = (time,id) =>{
