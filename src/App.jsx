@@ -10,12 +10,22 @@ function App() {
   const [readingTime, setReadingTime] = useState(0);
   
   const handleAddToBookmark = (blog) =>{
-    const newBookmark = [...bookmark, blog];
-    setBookmark(newBookmark);
+    const isExist = bookmark.find(cart => cart.id === blog.id);
+    if(isExist){
+     return alert('Item is already exists in the selections')
+    }
+    // else{
+    //   alert('Item is already exists in the selections')
+    // }
+     const newBookmark = [...bookmark, blog];
+     setBookmark(newBookmark);
   }
 
-  const handleMarkAsRead = time =>{
+  const handleMarkAsRead = (time,id) =>{
     setReadingTime(readingTime + time);
+    // remove read blog from bookmark
+    const remainingBookmark = bookmark.filter(bookmark => bookmark.id !== id);
+    setBookmark(remainingBookmark);
   }
 
 

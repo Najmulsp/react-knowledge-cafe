@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { IoBookmarkOutline } from "react-icons/io5";
 
 const Blog = ({blog, handleAddToBookmark, handleMarkAsRead}) => {
-    const {title,cover_img, author_img, author, reading_time, posted_date, hashtags} = blog;
+    const {title,cover_img, author_img, author, reading_time, posted_date, hashtags, id} = blog;
     return (
         <div className='space-y-4 mt-6'>
             <img className='w-full  h-96 rounded-lg ' src= {cover_img} alt="" />
@@ -24,7 +24,7 @@ const Blog = ({blog, handleAddToBookmark, handleMarkAsRead}) => {
             <p className='w-full pl-4'>
                 {hashtags.map((hash, idx) => <span key={idx}><a>{hash} </a> </span> )}
             </p>
-            <button className='w-full pl-4 text-left  text-blue-500 underline'  onClick={() => handleMarkAsRead(reading_time)}>Mark as read</button>
+            <button className='w-full pl-4 text-left  text-blue-500 underline'  onClick={() => handleMarkAsRead(reading_time, id)}>Mark as read</button>
         </div>
     );
 };
